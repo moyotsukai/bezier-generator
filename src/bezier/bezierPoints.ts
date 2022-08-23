@@ -1,5 +1,6 @@
 import { BezierPath } from '../types/BezierPath.type'
 import { Coordinate } from '../types/Coordinate.type'
+import { cos, sin, asin } from '../utils/Math'
 
 //da: destination angle
 //dl: destination length
@@ -26,7 +27,7 @@ export const bezierPoints = (props: Props): BezierPath[] => {
 
   let paths: BezierPath[] = []
   for (let i = 0; i < controls.length; i++) {
-    const m = paths.length === 0 ? start : paths[paths.length - 1].m
+    const m = paths.length === 0 ? start : paths[paths.length - 1].c[2]
     const control = controls[i]
     const da = -control.da
     const dl = control.dl
@@ -51,20 +52,4 @@ export const bezierPoints = (props: Props): BezierPath[] => {
   }
 
   return paths
-}
-
-const cos = (angle: number) => {
-  return Math.cos(angle * Math.PI / 180)
-}
-
-const sin = (angle: number) => {
-  return Math.sin(angle * Math.PI / 180)
-}
-
-const atan = (x: number) => {
-  return Math.atan(x) * 180 / Math.PI
-}
-
-const asin = (x: number) => {
-  return Math.asin(x) * 180 / Math.PI
 }
