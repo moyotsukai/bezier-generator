@@ -1,8 +1,8 @@
 import React from 'react'
-import { bezierPoints } from '../bezier/bezierPoints'
-import Svg from '../components/Svg/Svg'
-import SvgPath from '../components/Svg/SvgPath'
-import { BezierPath } from '../types/BezierPath.type'
+import { bezierPoints } from '../../bezier/bezierPoints'
+import Svg from '../Svg/Svg'
+import SvgPath from '../Svg/SvgPath'
+import { BezierPath } from '../../types/BezierPath.type'
 
 const Omugai: React.FC = () => {
   const paths: BezierPath[] = [

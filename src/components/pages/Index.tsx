@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import Omugai from '../../works/Omugai'
+import Omugai from '../works/Omugai'
 import styles from '../../styles/pages/Index.module.css'
 
 const Index: React.FC = () => {
