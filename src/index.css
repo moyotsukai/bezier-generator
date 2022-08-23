@@ -1,0 +1,41 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #000;
+}
+
+*:focus {
+  outline: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #000;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
