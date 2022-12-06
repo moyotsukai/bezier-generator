@@ -1,13 +1,13 @@
-import { Coordinate } from "../types/Coordinate.type"
+import { Vec2 } from "../types/Vec2"
 import { cos, sin } from "../utils/Math"
 
 type Props = {
-  center: Coordinate
+  center: Vec2
   angle: number
-  point: Coordinate
+  point: Vec2
 }
 
-export const rotatePoint = ({ center, angle, point }: Props): Coordinate => {
+export const rotatePoint = ({ center, angle, point }: Props): Vec2 => {
   const replacedAngle = -angle
   const x = center.x + (point.x - center.x) * cos(replacedAngle) - (point.y - center.y) * sin(replacedAngle)
   const y = center.y + (point.y - center.y) * cos(replacedAngle) + (point.x - center.x) * sin(replacedAngle)

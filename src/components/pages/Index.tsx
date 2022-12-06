@@ -1,6 +1,4 @@
 import React, { useRef } from 'react'
-import styles from '../../styles/pages/Index.module.css'
-import Aoigai from '../works/Aoigai'
 import Example from '../works/Example'
 
 const Index: React.FC = () => {
@@ -25,7 +23,7 @@ const Index: React.FC = () => {
     <div>
       <button onClick={downloadSvg}>Download</button>
       <div ref={svgContainerRef}>
-        <Aoigai />
+        <Example />
       </div>
     </div>
   )
