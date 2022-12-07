@@ -1,3 +1,5 @@
+import { Vec2 } from "../types/Vec2"
+
 export const sin = (angle: number) => {
   return Math.sin(angle * Math.PI / 180)
 }
@@ -39,7 +41,7 @@ export const normalizeAngle = (angle: number) => {
   return (angle % 360 + 360) % 360
 }
 
-//鈍角の場合、鋭角にする
+//鈍角の場合、鋭角を求める
 export const takeAcuteAngle = (angle: number) => {
   const normalized = normalizeAngle(angle)
   if (normalized > 180) {

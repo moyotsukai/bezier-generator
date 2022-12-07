@@ -2,6 +2,8 @@ import React from 'react'
 import styles from '../../styles/Svg/Svg.module.css'
 
 type Props = {
+  width?: number
+  height?: number
   children?: React.ReactNode
 }
 
@@ -10,9 +12,9 @@ const Svg: React.FC<Props> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="	3508px"
-      height="2480px"
-      viewBox="0 0 3508 2480"
+      width={`${props.width ?? 3508}px`}
+      height={`${props.height ?? 2480}px`}
+      viewBox={`0 0 ${props.width ?? 3508} ${props.height ?? 2480}`}
       stroke="black"
       fill="transparent"
       className={styles.svg}
