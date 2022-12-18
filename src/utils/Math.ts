@@ -1,5 +1,3 @@
-import { Vec2 } from "../types/Vec2"
-
 export const sin = (angle: number) => {
   return Math.sin(angle * Math.PI / 180)
 }
@@ -19,6 +17,8 @@ export const acos = (num: number) => {
 export const sqrt = Math.sqrt
 
 export const pow = Math.pow
+
+export const abs = Math.abs
 
 //余弦定理から長さを求める
 export const angleAfromLawOfCosines = ({ a, b, c }: { a: number, b: number, c: number }) => {

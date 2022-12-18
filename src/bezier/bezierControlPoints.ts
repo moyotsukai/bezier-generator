@@ -4,6 +4,7 @@ import { Vec2 } from '../types/Vec2'
 import { cos, sin } from '../utils/Math'
 import { midpoint } from './midpoint'
 import { BezierPathInfo } from '../types/BezierPathInfo.type'
+import { inferLine } from './inferLine'
 
 //start: start anchor point
 //eaa: end anchor angle
@@ -51,12 +52,9 @@ export const bezierControlPoints = (props: Props): BezierPathInfo[] => {
       controlDistance = endAnchorLength * controlDistanceRatio
     } else {
       const controlLineAngle = endAnchorAngle - controlMidpointAngle - controlDistanceAngle
-      const extendedControlMidpoint: Vec2 = {
-        x: controlMidpoint.x + cos(controlLineAngle) * 1000,
-        y: controlMidpoint.y - sin(controlLineAngle) * 1000
-      }
+      const inferedControlLine = inferLine({ point: controlMidpoint, angle: controlLineAngle })
       const previousPath = pathsInfo[pathsInfo.length - 1]
-      const smoothStartControl = intersection([previousPath.endControl, previousPath.endAnchor], [controlMidpoint, extendedControlMidpoint]) ?? { x: 0, y: 0 }
+      const smoothStartControl = intersection([previousPath.endControl, previousPath.endAnchor], inferedControlLine) ?? { x: 0, y: 0 }
       controlDistance = distance(smoothStartControl, controlMidpoint) * 2
     }
 
