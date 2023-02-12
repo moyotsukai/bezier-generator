@@ -1,6 +1,4 @@
-import { Vec2 } from './Vec2'
-
-export type BezierPathInfo = {
+export type BezierPoints = {
   startAnchor: Vec2
   startControl: Vec2,
   endControl: Vec2,

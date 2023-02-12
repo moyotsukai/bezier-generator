@@ -1,8 +1,8 @@
 import React from 'react'
-import { BezierPathInfo } from '../../types/BezierPathInfo.type'
+import { BezierPoints } from '../spline/BezierPoints'
 
 type Props = {
-  path: BezierPathInfo
+  path: BezierPoints
   stroke?: string
   fill?: string
 }

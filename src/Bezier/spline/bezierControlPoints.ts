@@ -1,10 +1,10 @@
 import { intersection } from './intersection'
 import { distance } from './distance'
-import { Vec2 } from '../types/Vec2'
-import { cos, sin } from '../utils/Math'
+import { cos, sin } from '../../utils/Math'
 import { midpoint } from './midpoint'
-import { BezierPathInfo } from '../types/BezierPathInfo.type'
 import { inferLine } from './inferLine'
+import { BezierVec2 } from './BezierVec2'
+import { BezierPoints } from './BezierPoints'
 
 //start: start anchor point
 //eaa: end anchor angle
@@ -14,8 +14,8 @@ import { inferLine } from './inferLine'
 //cdr: ratio of control distance to end anchor length
 //cda: control distance angle
 
-type Props = {
-  start: Vec2,
+export type BezierControlPointsProps = {
+  start: BezierVec2,
   controls: {
     eaa: number,
     eal: number,
@@ -26,23 +26,23 @@ type Props = {
   }[]
 }
 
-export const bezierControlPoints = (props: Props): BezierPathInfo[] => {
+export const bezierControlPoints = (props: BezierControlPointsProps): BezierPoints[] => {
   const { start, controls } = props
 
-  let pathsInfo: BezierPathInfo[] = []
+  let pathsInfo: BezierPoints[] = []
   for (let i = 0; i < controls.length; i++) {
     const control = controls[i]
-    const startAnchor: Vec2 = pathsInfo.length === 0 ? start : pathsInfo[pathsInfo.length - 1].endAnchor
+    const startAnchor: BezierVec2 = pathsInfo.length === 0 ? start : pathsInfo[pathsInfo.length - 1].endAnchor
     const [endAnchorAngle, endAnchorLength, controlMidpointAngle, controlMidpointLength, controlDistanceAngle, controlDistanceRatio] = [control.eaa, control.eal, control.cma, control.cml, control.cda, control.cdr]
 
-    const endAnchor: Vec2 = {
+    const endAnchor: BezierVec2 = {
       x: startAnchor.x + cos(endAnchorAngle) * endAnchorLength,
       y: startAnchor.y - sin(endAnchorAngle) * endAnchorLength
     }
 
-    const anchorMidpoint: Vec2 = midpoint(startAnchor, endAnchor)
+    const anchorMidpoint: BezierVec2 = midpoint(startAnchor, endAnchor)
 
-    const controlMidpoint: Vec2 = {
+    const controlMidpoint: BezierVec2 = {
       x: anchorMidpoint.x + cos(endAnchorAngle + (90 - controlMidpointAngle)) * controlMidpointLength,
       y: anchorMidpoint.y - sin(endAnchorAngle + (90 - controlMidpointAngle)) * controlMidpointLength
     }
@@ -58,12 +58,12 @@ export const bezierControlPoints = (props: Props): BezierPathInfo[] => {
       controlDistance = distance(smoothStartControl, controlMidpoint) * 2
     }
 
-    const startControl: Vec2 = {
+    const startControl: BezierVec2 = {
       x: controlMidpoint.x + cos(180 - (controlMidpointAngle - endAnchorAngle + controlDistanceAngle)) * (controlDistance / 2),
       y: controlMidpoint.y - sin(180 - (controlMidpointAngle - endAnchorAngle + controlDistanceAngle)) * (controlDistance / 2)
     }
 
-    const endControl: Vec2 = {
+    const endControl: BezierVec2 = {
       x: controlMidpoint.x + cos(360 - (controlMidpointAngle - endAnchorAngle + controlDistanceAngle)) * (controlDistance / 2),
       y: controlMidpoint.y - sin(360 - (controlMidpointAngle - endAnchorAngle + controlDistanceAngle)) * (controlDistance / 2)
     }

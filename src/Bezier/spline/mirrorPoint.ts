@@ -1,15 +1,15 @@
 import { intersection } from './intersection'
-import { Vec2 } from "../types/Vec2"
 import { inferLine } from "./inferLine"
 import { rotatePoint } from "./rotatePoint"
+import { BezierVec2 } from './BezierVec2'
 
 type Props = {
-  center: Vec2
+  center: BezierVec2
   angle: number
-  point: Vec2
+  point: BezierVec2
 }
 
-export const mirrorPoint = (props: Props): Vec2 => {
+export const mirrorPoint = (props: Props): BezierVec2 => {
   const { center, angle, point } = props
 
   const inferedAxis = inferLine({ point: center, angle: angle })

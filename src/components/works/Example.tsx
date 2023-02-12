@@ -1,39 +1,39 @@
 import React from 'react'
-import { bezierControlPoints } from '../../bezier/bezierControlPoints'
-import Svg from '../Svg/Svg'
-import SvgCubicBezier from '../Svg/SvgCubicBezier'
-import SvgCubicBezierInfo from '../Svg/SvgCubicBezierInfo'
-import { BezierPathInfo } from '../../types/BezierPathInfo.type'
+import { bezierControlPoints } from '../../Bezier/spline/bezierControlPoints'
+import SvgCanvas from '../../Bezier/Svg/SvgCanvas'
+import SvgCubicBezier from '../../Bezier/Svg/SvgCubicBezier'
+import SvgCubicBezierInfo from '../../Bezier/Svg/SvgCubicBezierGuide'
+import { BezierSpline } from '../../Bezier/spline/BezierSpline'
 
 const Example: React.FC = () => {
-  const CENTER = { x: 1200, y: 2200 }
-  const path = bezierControlPoints({
+  const CENTER = { x: 1200, y: 1200 }
+
+  const spline = new BezierSpline(bezierControlPoints({
     start: CENTER,
     controls: [
       { eaa: 120, eal: 800, cma: 0, cml: 200, cdr: 0.4, cda: 20 },
       { eaa: 30, eal: 800, cma: 10, cml: 250, cdr: "smooth", cda: 10 },
-      { eaa: 30, eal: 800, cma: 10, cml: -350, cdr: "smooth", cda: 10 },
-      { eaa: 20, eal: 800, cma: 25, cml: 300, cdr: "smooth", cda: -10 },
     ]
-  })
+  }))
 
-  const pathInfoGroups: BezierPathInfo[][] = [
-    path
+  const splineGroups: BezierSpline[] = [
+    spline.rotate({ center: CENTER, angle: -30 }),
+    spline.rotate({ center: CENTER, angle: -60 }).rotate({ center: CENTER, angle: 180 })
   ]
 
   return (
-    <Svg>
-      {pathInfoGroups.map((pathsInfo, index) => (
+    <SvgCanvas>
+      {splineGroups.map((spline, index) => (
         <g key={index}>
-          {pathsInfo.map((pathInfo, index) => (
+          {spline.paths.map((path, index) => (
             <React.Fragment key={index}>
-              <SvgCubicBezier path={pathInfo} />
-              <SvgCubicBezierInfo pathInfo={pathInfo} />
+              <SvgCubicBezier path={path} />
+              <SvgCubicBezierInfo pathInfo={path} />
             </React.Fragment>
           ))}
         </g>
       ))}
-    </Svg>
+    </SvgCanvas>
   )
 }
 

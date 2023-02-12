@@ -1,13 +1,13 @@
 import React from 'react'
-import { BezierPathInfo } from '../../types/BezierPathInfo.type'
+import { BezierPoints } from '../spline/BezierPoints'
 import SvgCircle from './SvgCircle'
 import SvgLine from './SvgLine'
 
 type Props = {
-  pathInfo: BezierPathInfo
+  pathInfo: BezierPoints
 }
 
-const SvgCubicBezierInfo: React.FC<Props> = (props) => {
+const SvgCubicBezierGuide: React.FC<Props> = (props) => {
   const info = props.pathInfo
 
   return (
@@ -28,4 +28,4 @@ const SvgCubicBezierInfo: React.FC<Props> = (props) => {
   )
 }
 
-export default SvgCubicBezierInfo
+export default SvgCubicBezierGuide

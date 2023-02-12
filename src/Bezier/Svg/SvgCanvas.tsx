@@ -8,7 +8,7 @@ type Props = {
 }
 
 //The dedault size 3508px x 2480px is A4
-const Svg: React.FC<Props> = (props) => {
+const SvgCanvas: React.FC<Props> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,11 +17,11 @@ const Svg: React.FC<Props> = (props) => {
       viewBox={`0 0 ${props.width ?? 3508} ${props.height ?? 2480}`}
       stroke="black"
       fill="transparent"
-      className={styles.svg}
+      className={styles.svgCanvas}
     >
       {props.children}
     </svg>
   )
 }
 
-export default Svg
+export default SvgCanvas

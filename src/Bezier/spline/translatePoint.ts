@@ -1,13 +1,13 @@
-import { Vec2 } from "../types/Vec2"
-import { cos, sin } from "../utils/Math"
+import { cos, sin } from "../../utils/Math"
+import { BezierVec2 } from "./BezierVec2"
 
 type Props = {
   angle: number
   distance: number
-  point: Vec2
+  point: BezierVec2
 }
 
-export const translatePoint = (props: Props): Vec2 => {
+export const translatePoint = (props: Props): BezierVec2 => {
   const { angle, distance, point } = props
 
   return {

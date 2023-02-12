@@ -1,9 +1,9 @@
 import React from 'react'
-import { Vec2 } from '../../types/Vec2'
+import { BezierVec2 } from '../spline/BezierVec2'
 
 type Props = {
-  start: Vec2
-  end: Vec2
+  start: BezierVec2
+  end: BezierVec2
   stroke?: string
   fill?: string
 }
