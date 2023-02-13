@@ -14,6 +14,10 @@ export const acos = (num: number) => {
   return Math.acos(num) * 180 / Math.PI
 }
 
+export const atan = (num: number) => {
+  return Math.atan(num) * 180 / Math.PI
+}
+
 export const sqrt = Math.sqrt
 
 export const pow = Math.pow

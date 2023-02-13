@@ -1,14 +1,13 @@
 import React from 'react'
 import Bezier from '../../Bezier'
 import Example from '../works/Example'
-import WhippedCream from '../works/WhippedCream'
 
-const Index: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
     <Bezier.Root>
-      <WhippedCream />
+      <Example />
     </Bezier.Root>
   )
 }
 
-export default Index
+export default HomePage

@@ -1,4 +1,5 @@
-import { bezierControlPoints, BezierControlPointsProps } from "./spline/bezierControlPoints"
+import { bezierControlPoints } from "./spline/bezierControlPoints"
+import { BezierControlPointsProps } from "./spline/BezierControlPoints.type"
 import { BezierPoints } from "./spline/BezierPoints"
 import { BezierSpline } from "./spline/BezierSpline"
 import { BezierVec2 } from "./spline/BezierVec2"

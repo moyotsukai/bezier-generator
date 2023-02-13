@@ -11,7 +11,6 @@ type Props = {
 const SvgRoot: React.FC<Props> = ({ fileName, children }) => {
   const svgContainerRef = useRef<HTMLDivElement>(null)
 
-
   const downloadSvg = () => {
     if (!svgContainerRef) { return }
     const svgElement = svgContainerRef.current?.querySelector("svg")
